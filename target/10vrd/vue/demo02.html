@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="mydiv">
+    <!--让显示的内容和vue对象中的count变量绑定-->
+    <h3>商品数量:{{count}}</h3>
+    <input type="button" value="添加">
+    <!--v-text作用类似于th:text 让h3的文本内容和info变量绑定-->
+    <h3 v-text="info"></h3>
+    <!--这种双大括号写法如果网络不顺畅有可能会导致页面出现闪烁-->
+    <h3>{{info}}</h3>
+    <!--v-html 让标签内容和变量绑定-->
+    <div v-text="msg"></div>
+    <div v-html="msg"></div>
+</div>
+<script src="../bootstrap3/jquery.min.js"></script>
+<!--引入vue框架-->
+<script src="../js/vue.js"></script>
+<script>
+    //创建vue对象
+    let v = new Vue({
+        el:"#mydiv",//设置别管理元素的选择器
+        data:{
+            count:0,
+            info:"helloword",
+            msg:"<b>这是加粗标签</b>"
+        }
+    });
+    //给按钮添加点击事件
+    $("input").click(function () {
+        //让vue对象中的count变量自增 不需要对页面内容进行改动
+        //页面中的内容会自动跟着改变.
+        v.count++;
+    });
+</script>
+</body>
+</html>

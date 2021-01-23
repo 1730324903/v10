@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="mydiv">
+    <!--遍历vue对象中的list集合-->
+    <div v-for="(p,i) in list">
+        <h3 v-text="p.title"></h3>
+        <img v-bind:src="p.url" width="200" alt="">
+    </div>
+</div>
+<script src="bootstrap3/jquery.min.js"></script>
+<script src="js/vue.js"></script>
+<script>
+    let v = new Vue({
+        el:"#mydiv",
+        data:{list:[]}
+    })
+    //3秒后发出请求
+    setTimeout(function () {
+        //发出异步请求 获取服务器返回json字符串
+        $.ajax({
+            type:"get",
+            url:"json1",
+            deta:"",
+            success:function(msg){//msg为返回的json字符串
+                //将服务器返回的json字符串转换成json对象 并赋值给vue中的
+                v.list=JSON.parse(msg)
+        }
+        })
+    },3000)
+</script>
+</body>
+</html>

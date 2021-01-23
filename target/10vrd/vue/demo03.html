@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="mydiv">
+    <h3 v-text="msg"></h3>
+    <!--让文本框的值和msg变量进项绑定，双向绑定:文本框的值受msg变量
+    的值影响，同时文本框值发生改变时msg也会跟着发生改变-->
+    <input type="text" v-model="msg">
+    <!--让元素的属性和变量进行绑定-->
+    <h1 v-bind:style="{'color':color}">属性测试</h1>
+</div>
+    <script src="../bootstrap3/jquery.min.js"></script>
+    <!--引入vue框架-->
+    <script src="../js/vue.js"></script>
+    <script>
+        let v = new Vue({
+            el:"#mydiv",
+            data:{
+                msg:"测试文本",
+                color:"red"
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="mydiv">
+    <!--给元素绑定xxx事件 两种写法 作用相同-->
+    <input type="button" value="按钮1" v-on:click="myfn()">
+    <input type="button" value="按钮2" @click="myfn()">
+</div>
+<script src="../bootstrap3/jquery.min.js"></script>
+<!--引入vue框架-->
+<script src="../js/vue.js"></script>
+<script>
+    //创建一个vue对象
+    let v = new Vue({
+        el:"#mydiv",
+        data:{},
+        methods:{//和vue相关的方法全部写到这里面
+            myfn:function () {
+                alert("方法触发了！")
+            }
+        }
+    })
+</script>
+</body>
+</html>

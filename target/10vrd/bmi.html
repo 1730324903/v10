@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" name="h" placeholder="身高(米)">
+<input type="text" name="w" placeholder="体重(公斤)">
+<input type="button" value="检测">
+<script src="bootstrap3/jquery.min.js"></script>
+<script>
+    //给按钮添加点击事件
+    $("input:last").click(function () {
+        //发出异步请求    h=1.8&w=80
+        $.ajax({
+            type:"get",
+            url:"bmi",
+            data:"h="+$("input:eq(0)").val()+"&w="+$("input:eq(1)").val(),
+            success:function (msg) {
+                alert(msg);//弹出服务器返回的内容  张三&18&男&
+            }
+        })
+    });
+</script>
+</body>
+</html>
